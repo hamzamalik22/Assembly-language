@@ -1,6 +1,6 @@
 # Assembly Language Learning Repository
 
-Welcome to my Assembly Language Learning Repository! This repository is dedicated to storing the code examples and projects I've been working on as I learn the basics of assembly language programming. Below, you'll find an overview of what's included in this repository and how to navigate through it.
+This repository is dedicated to storing the code examples and projects I've been working on as I learn the basics of assembly language programming. Below, you'll find an overview of what's included in this repository and how to navigate through it.
 
 ## Contents
 
@@ -8,9 +8,7 @@ Welcome to my Assembly Language Learning Repository! This repository is dedicate
 
 2. **Intermediate Assembly Programs**: Here, you'll find slightly more advanced programs that delve into topics like loops, conditional statements, and subroutine calls.
 
-3. **Advanced Assembly Projects**: In this section, I explore more complex topics, including string manipulation, file I/O, and interfacing with external devices.
-
-4. **Resources**: This directory includes helpful resources such as textbooks, online tutorials, and reference guides that I've found useful in my learning journey.
+3. **Resources**: This directory includes helpful resources such as textbooks, online tutorials, and reference guides that I've found useful in my learning journey.
 
 ## Getting Started
 
@@ -19,7 +17,7 @@ If you're new to assembly language programming or to this repository, here's how
 1. Clone this repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/your-username/assembly-language-learning.git
+git clone https://github.com/hamzamalik22/Assembly-language.git
 ```
 
 2. Explore the directories mentioned above to find code examples and projects that interest you.
@@ -39,10 +37,6 @@ I welcome contributions from fellow assembly language enthusiasts! Whether you w
 3. Submit a pull request, explaining the purpose of your changes and any relevant details.
 
 4. Your pull request will be reviewed, and once approved, your changes will be merged into the main repository.
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE). Feel free to use the code for educational purposes, personal projects, or any other non-commercial use.
 
 ## Acknowledgments
 
