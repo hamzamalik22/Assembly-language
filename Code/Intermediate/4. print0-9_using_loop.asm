@@ -3,7 +3,7 @@
 .data
 .code
     main proc
-        mov cx, 10      ; initialize counter with 10
+        mov cx, 10      ; initialize counter with 10w
         mov dl, 48      ; moving Ascii of 0 in data register
 
         LabelPrint:     ; Open a label
