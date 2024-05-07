@@ -1,22 +1,23 @@
-.MODEL SMALL 
-.STACK 100H 
-.DATA 
+.model small
+.stack 100h
+.data
+    name1 db 'Hamza Malik$'  ; declaration of string
+    reg db 'Reg. No. 22-CS-86','$'  ; alternate declaration of string
+.code
+main proc
+    mov ax, @data  ; moves the memory location of .data into ax register
+    mov ds, ax     ; move data address into data segment
 
-STRING DB 'Hamza Malik', '$'
+    lea dx, name1  ; moving string name1 into dx register
+    mov ah, 9      ; Service Routine for printing string
+    int 21h
 
-.CODE 
-MAIN PROC  
-MOV AX, @DATA 
-MOV DS, AX 
+    lea dx, reg
+    mov ah, 9
+    int 21h
 
-LEA DX, STRING 
+    mov ah, 4ch
+    int 21h
 
-MOV AH, 09H 
-INT 21H 
-
-MOV AH, 4CH 
-INT 21H 
-
-MAIN ENDP 
-END MAIN 
-
+main endp 
+end main
