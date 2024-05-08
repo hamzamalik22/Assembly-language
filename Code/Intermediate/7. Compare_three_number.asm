@@ -1,92 +1,83 @@
-    .model small
-    .stack 100h
-    .data
-        msg1 db 'Input First Number: ', '$'
-        msg2 db 'Input Second Number: ', '$'
-        msg3 db 'Input Third Number: ', '$'
-        msg4 db 'Greater Number is: ', '$'
-    .code
-        main proc 
-            mov ax, @data  ; moves the memory location of .data into ax register
-            mov ds, ax     ; move data address into data segment
+.model small
+.stack 100h
+.data
+    msg1 db 10,13,'Input Fist Number :', '$'
+    msg2 db 10,13,'Input Second Number :', '$'
+    msg3 db 10,13,'Input Third Number :', '$'
+    msg4 db 10,13,'Greater Number is :', '$'
 
-            ; Input first number
-            lea dx, msg1   ; printing msg1
-            mov ah, 9
-            int 21h
+    num1 db ?
+    num2 db ?
+    num3 db ?
+    greater db ?
 
-            mov ah, 1      ; Input from user
-            int 21h
+.code
+    main proc 
+        mov ax, @data  ; moves the memory location of .data into ax register
+        mov ds, ax     ; move data address into data segment
 
-            sub al, 48    ; Convert ASCII to number
-            mov bl, al    ; Store the first number in bl
+        lea dx, msg1   ; printing msg1
+        mov ah, 9
+        int 21h
 
-            ; Input second number
-            lea dx, msg2   ; printing msg2
-            mov ah, 9
-            int 21h
+        mov ah, 1      ; Input from user
+        int 21h 
 
-            mov ah, 1      ; Input from user
-            int 21h
+        mov num1, al
 
-            sub al, 48     ; Convert ASCII to number
-            mov cl, al    ; Store the second number in cl
+        lea dx, msg2  ; printing msg2
+        mov ah, 9
+        int 21h
 
-            ; Input third number
-            lea dx, msg3   ; printing msg3
-            mov ah, 9
-            int 21h
+        mov ah, 1
+        int 21h
 
-            mov ah, 1      ; Input from user
-            int 21h
+        mov num2, al 
 
-            sub al, 48     ; Convert ASCII to number
-            mov dl, al    ; Store the third number in dl
+        lea dx, msg3  ; printing msg3
+        mov ah, 9
+        int 21h
 
-            ; Compare the numbers to find the greatest
-            mov al, bl    ; Move the first number to al for comparison
-            cmp cl, al    ; Compare second number with first
-            jg SecondIsGreater ; Jump if second number is greater
+        mov ah, 1
+        int 21h
 
-            cmp dl, al    ; Compare third number with first
-            jg ThirdIsGreater ; Jump if third number is greater
+        mov num3, al
 
-            ; If none of the above conditions are met, then the first number is the greatest
-            lea dx, msg4  ; printing msg4
-            mov ah, 9
-            int 21h
-            mov dl, bl    ; Move the first number to dl
-            add dl, 48    ; Convert the number to ASCII
-            mov ah, 2     ; Print the greatest number
-            int 21h
-            jmp ExitProgram ; Jump to exit
+        mov bl, num1
 
-        SecondIsGreater:
-            cmp dl, cl    ; Compare third number with second
-            jg ThirdIsGreater ; Jump if third number is greater
-            ; If the above condition is not met, then the second number is the greatest
-            lea dx, msg4  ; printing msg4
-            mov ah, 9
-            int 21h
-            mov dl, cl    ; Move the second number to dl
-            add dl, 48    ; Convert the number to ASCII
-            mov ah, 2     ; Print the greatest number
-            int 21h
-            jmp ExitProgram ; Jump to exit
+        cmp bl, num2  ; first comparison
+        jg First
 
-        ThirdIsGreater:
-            ; If none of the above conditions are met, then the third number is the greatest
-            lea dx, msg4  ; printing msg4
-            mov ah, 9
-            int 21h
-            mov dl, dl    ; Move the third number to dl
-            add dl, 48    ; Convert the number to ASCII
-            mov ah, 2     ; Print the greatest number
-            int 21h
+        mov bl, num2
+        jmp Second
 
-        ExitProgram:
-            mov ah, 4ch   ; Exit the program
-            int 21h
+    First:
+        mov bl, num1
+    
+    Second:
+        cmp bl, num3  ; Second comparison
+        jmp Third
+        mov bl, num3
+    
 
-        main endp
-    end main
+    Third:
+        mov dl, bl
+        mov greater, dl
+        jmp Display
+
+
+    Display:
+        lea dx, msg4  ; printing msg4
+        mov ah, 9
+        int 21h
+
+        mov dl, greater
+        mov ah, 2
+        int 21h
+
+    ExitProgram:
+        mov ah,4ch
+        int 21h
+
+    main endp
+end main
