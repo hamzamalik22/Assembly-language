@@ -1,9 +1,12 @@
 .model small
 .stack 100h
 .data
-    msg1 db 'Input Fist Number :', '$'
-    msg2 db 'Input Second Number :', '$'
-    msg3 db 'Greater Number is :', '$'
+    msg1 db 10,13,'Input Fist Number :', '$'
+    msg2 db 10,13,'Input Second Number :', '$'
+    msg3 db 10,13,'Greater Number is :', '$'
+
+    num1 db ?
+    num2 db ?
 .code
     main proc 
         mov ax, @data  ; moves the memory location of .data into ax register
@@ -14,10 +17,9 @@
         int 21h
 
         mov ah, 1      ; Input from user
-        int 21h
+        int 21h 
 
-        sub al, 48    ; Convert 
-        mov bl,al
+        mov num1, al
 
         lea dx, msg2  ; printing msg1
         mov ah, 9
@@ -26,16 +28,17 @@
         mov ah, 1
         int 21h
 
-        sub al, 48  ; Converting Ascii to number
+        mov num2, al 
 
-        cmp al, bl 
+        mov bl, num1
+
+        cmp bl, num2
         jg First
 
         lea dx, msg3  ; printing msg1
         mov ah, 9
         int 21h
-        mov dl, bl
-        add dl, 48   ; Converting Ascii to number
+        mov dl, num2
         mov ah, 2
         int 21h
         jmp ExitProgram
@@ -44,8 +47,7 @@
         lea dx, msg3
         mov ah, 9
         int 21h
-        mov dl, bl
-        add dl, 48
+        mov dl, num1
         mov ah, 2
         int 21h
     
