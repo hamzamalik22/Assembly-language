@@ -20,39 +20,39 @@
         mov ah, 9
         int 21h
 
-        mov ah, 1      ; Input from user
+        mov ah, 1      ; Input from user num1
         int 21h 
 
-        mov num1, al
+        mov num1, al   ; mov input into variable num1
 
         lea dx, msg2  ; printing msg2
         mov ah, 9
         int 21h
 
-        mov ah, 1
+        mov ah, 1    ; Input from user num2
         int 21h
 
-        mov num2, al 
+        mov num2, al  ; mov input into variable num2
 
         lea dx, msg3  ; printing msg3
         mov ah, 9
         int 21h
 
-        mov ah, 1
+        mov ah, 1    ; Input from user num3
         int 21h
 
-        mov num3, al
+        mov num3, al   ; mov input into variable num3
 
-        mov bl, num1
+        mov bl, num1   ; mov num1 into bl register, as comparison required one register
 
-        cmp bl, num2  ; first comparison
-        jg First
-
-        mov bl, num2
+        cmp bl, num2   ; first comparison
+        jg First       ; if num > num2 --> jump to First
+ 
+        mov bl, num2   ; num2 is greater, mov num2 --> bl register
         jmp Second
 
-    First:
-        mov bl, num1
+    First:  
+        mov bl, num1   ; mov num2 --> bl register
     
     Second:
         cmp bl, num3  ; Second comparison
