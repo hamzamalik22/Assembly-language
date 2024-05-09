@@ -52,21 +52,23 @@
         jmp Second
 
     First:  
-        mov bl, num1   ; mov num2 --> bl register
+        mov bl, num1   ; mov num1 --> bl register
     
     Second:
         cmp bl, num3  ; Second comparison
-        jmp Third
+        jg Third
+
         mov bl, num3
+        jmp Third
     
 
     Third:
         mov dl, bl
         mov greater, dl
-        jmp Display
+        jmp myOutput
 
 
-    Display:
+    myOutput:
         lea dx, msg4  ; printing msg4
         mov ah, 9
         int 21h
@@ -74,6 +76,7 @@
         mov dl, greater
         mov ah, 2
         int 21h
+        jmp ExitProgram
 
     ExitProgram:
         mov ah,4ch
