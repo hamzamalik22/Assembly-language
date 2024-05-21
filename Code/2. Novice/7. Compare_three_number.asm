@@ -56,7 +56,7 @@
     
     Second:
         cmp bl, num3  ; Second comparison
-        jg Third
+        jg Third      ; if num > num2 --> jump to First
 
         mov bl, num3
         jmp Third
